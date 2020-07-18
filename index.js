@@ -11,20 +11,27 @@ function formatQueryParams(params) {
   return queryItems.join('&');
 }
 
-function displayResults(responseJson) {
-  
-  console.log(responseJson);
-  $('#results-list').empty();
-  
-  for (let i = 0; i < responseJson.items.length; i++){
-    
-    $('#results-list').append(`<li>`, responseJson.items[i].snippet.title, responseJson.items[i].snippet.description, responseJson.items[i].snippet.thumbnails,  `</li>`)
-  
-      
-      };
-        
-    $('#results').removeClass('hidden');
-  };
+function displayResults(responseJson) { 
+   
+ console.log(responseJson); 
+   
+  $('#results-list').empty(); 
+   
+ 
+   for (let i = 0; i < responseJson.items.length; i++){ 
+   
+ $('#results-list').append(`<li><h3>${responseJson.items[i].snippet.title}</h3> 
+   
+    <p> 
+    ${responseJson.items[i].snippet.description} 
+    </p> 
+   
+ <img src='${responseJson.items[i].snippet.thumbnails.default.url}'></li>` 
+    )}; 
+   
+ $('#results').removeClass('hidden'); 
+   
+ }; 
 
 
 function getYouTubeVideos(query, maxResults=10) {
